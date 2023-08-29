@@ -1,7 +1,7 @@
 # OpenAI ChatGPT Action
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/cahaseler/openai-chatgpt-action.svg?style=flat)](https://github.com/cahaseler/openai-chatgpt-action/releases)
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-OpenAI%20ChatGPT%20Action-blue?logo=github)](https://github.com/marketplace/actions/openai-chatgpt-action)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/cahaseler/openai-api.svg?style=flat)](https://github.com/cahaseler/openai-api/releases)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-OpenAI%20API%20Action-blue?logo=github)](https://github.com/marketplace/actions/openai-api)
 
 This GitHub Action allows you to call the ChatGPT API with a simple prompt and response using your OpenAI API Key, directly from a GitHub Workflow.
 
