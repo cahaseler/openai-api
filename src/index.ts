@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import { wait } from './wait'
+import { getSimpleChatCompletion } from './openai'
 
 /**
  * The main function for the action.
@@ -7,18 +7,41 @@ import { wait } from './wait'
  */
 export async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
+    const apiKey: string = core.getInput('apiKey')
+    const prompt: string = core.getInput('prompt')
+    const input: string = core.getInput('input')
+    const model: string = core.getInput('model')
+    const temperature: number = parseInt(core.getInput('temperature'), 1000)
+    const max_tokens: number = parseInt(core.getInput('max_tokens'), 1)
 
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    core.debug(`Getting chat completion ...`)
 
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const completionResponse = await getSimpleChatCompletion(
+      apiKey,
+      prompt,
+      input,
+      model,
+      temperature,
+      max_tokens
+    )
 
-    // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString())
+    const completion = completionResponse?.choices[0]?.message?.content
+    if (!completion) {
+      core.setFailed('No completion provided')
+    }
+    core.setOutput('completion', completion)
+    core.setOutput(
+      'usage_prompt_tokens',
+      completionResponse?.usage?.prompt_tokens ?? 0
+    )
+    core.setOutput(
+      'usage_completion_tokens',
+      completionResponse?.usage?.completion_tokens ?? 0
+    )
+    core.setOutput(
+      'usage_total_tokens',
+      completionResponse?.usage?.total_tokens ?? 0
+    )
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)

@@ -1,18 +1,38 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'OpenAI ChatGPT Action'
+description: 'Call the ChatGPT API with a simple prompt and response'
+author: 'cahaseler'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  apiKey:
+    description: 'OpenAI API Key'
     required: true
-    default: '1000'
+  prompt:
+    description: 'Prompt for the chat completion'
+    required: true
+  input:
+    description: 'User input for the chat completion'
+    required: true
+  model:
+    description: 'Model to use for the chat completion'
+    required: true
+  temperature:
+    description: 'Temperature parameter for the chat completion (default: 1)'
+    required: false
+  max_tokens:
+    description: 'Max tokens parameter for the chat completion (default: 1000)'
+    required: false
 
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  completion:
+    description: 'The message content of the chat completion'
+  usage_prompt_tokens:
+    description: 'The number of tokens used in the prompt'
+  usage_completion_tokens:
+    description: 'The number of tokens used in the completion'
+  usage_total_tokens:
+    description: 'The total number of tokens used'
 
 runs:
   using: node16

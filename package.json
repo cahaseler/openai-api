@@ -1,16 +1,16 @@
 {
-  "name": "typescript-action",
-  "description": "GitHub Actions TypeScript template",
-  "version": "0.0.0",
-  "author": "",
-  "private": true,
-  "homepage": "https://github.com/actions/typescript-action",
+  "name": "openai-api",
+  "description": "GitHub Actions for OpenAI Chat API",
+  "version": "1.0.0",
+  "author": "cahaseler",
+  "private": false,
+  "homepage": "https://github.com/cahaseler/openai-api",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/cahaseler/openai-api.git"
   },
   "bugs": {
-    "url": "https://github.com/actions/typescript-action/issues"
+    "url": "https://github.com/cahaseler/openai-api/issues"
   },
   "keywords": [
     "actions",
@@ -63,13 +63,14 @@
     ]
   },
   "dependencies": {
-    "@actions/core": "^1.10.0"
+    "@actions/core": "^1.10.0",
+    "openai": "^4.3.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.4",
     "@types/node": "^20.5.7",
-    "@typescript-eslint/parser": "^6.4.1",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
     "@vercel/ncc": "^0.36.1",
     "eslint": "^8.48.0",
     "eslint-plugin-github": "^4.9.2",
